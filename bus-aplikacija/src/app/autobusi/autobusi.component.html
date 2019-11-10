@@ -1,0 +1,89 @@
+<div id="wrapper">
+
+    <!-- Sidebar -->
+    <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <li class="sidebar-brand">
+                <a href="#">
+                    LCN Buss Ticket Sistem
+                </a>
+            </li>
+            <li>
+                <a routerLink="/busevi" routerLinkActive="active">Spisak autobusa</a>
+            </li>
+            <li>
+                <a routerLink="/rute" routerLinkActive="active">Rute</a>
+            </li>
+            <li>
+                <a href="#">About</a>
+            </li>
+            <li>
+                <a href="#">Services</a>
+            </li>
+            <li>
+                <a href="#">Contact</a>
+            </li>
+        </ul>
+    </div>
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1>Pogledaj detalje o autobusima</h1>
+                    <hr>
+                    <h3>Dodaj novi autobus</h3>
+                    <div>
+                        <label>Ime busa:
+                          <input #busIme />
+                        </label>
+                        <label> Grad busa:
+                            <input #busGrad />
+                          </label>
+                          <label> Vrijeme polaska:
+                            <input #busPolazak />
+                          </label>
+                          <label> Vrijeme dolaska:
+                            <input #busDolazak />
+                          </label>
+                        <!-- (click) passes input value to add() and then clears the input -->
+                        <button type="button" class="btn btn-dark" (click)="add(busIme.value, busGrad.value,busPolazak.value, busDolazak.value); busIme.value=''; busGrad.value=''; busPolazak.value=''; busDolazak.value=''">
+                          Dodaj
+                        </button>
+                      </div>
+                      <hr>
+                    <table class="table table-dark">
+                        <thead>
+                          <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Ime autobusa</th>
+                            <th scope="col">Grad Polaska</th>
+                            <th scope="col">Vrijeme polaska</th>
+                            <th scope="col">Vrijeme dolaska</th>
+                            <th scope="col">Uredi autobus</th>
+                          </tr>
+                        </thead>
+                        <tbody *ngFor="let bus of busevi">
+                          <tr>
+                            <td>{{bus.id}}</td>
+                            <td>{{bus.ime}}</td>
+                            <td>{{bus.gradPolaska}}.</td>
+                            <td>{{bus.vrijemePolaska}}</td>
+                            <td>{{bus.vrijemeDolaska}}</td>
+                            <td><button  type="button" class="btn btn-danger" title="delete bus"
+                                (click)="delete(bus)">Izbriši</button></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /#page-content-wrapper -->
+
+</div>
+<!-- /#wrapper -->
+
+
